@@ -2,7 +2,7 @@
 
 ## 1. JPA와 Spring Data JPA
 
-### JPA<sub>Java Persistence API</sub>
+### JPA <sub>Java Persistence API</sub>
 : 자바 진영에서 관계형 데이터베이스를 사용하는 방식을 정의한 **인터페이스**
 
 * JPA는 기술 명세이기 때문에 구현체가 필요하다.
