@@ -180,3 +180,55 @@
   > 1. 쿼리 메서드가 너무 길어지고 복잡해지면 오히려 가독성이 떨어질 수 있다. 
   > 2. 간단한 조회 쿼리 수준에서는 문제가 되지 않을 수 있지만, 앞서 소개한 JOIN 쿼리 메서드와 같이 다소 직관적으로 이해하기 힘든 쿼리 메서드를 사용하려면 우선 팀원들의 JPA에 대한 이해도가 어느 정도 동일 선상에 있다는 것이 가정되어야 할 것이다. 
 
+
+  ### 2) DTO Projection도 가능하다.
+
+  ```java
+  public interface CouponRepository extends JpaRepository<Coupon, Integer> {
+      //select * from Coupon where payment_id = {paymentId}
+      Optional<Coupon> findByPaymentId(Integer paymentId);
+  }
+
+  public class CouponDto {
+      private Integer id;
+      private String name;
+      private int discountRate;
+      private int minAmount;
+
+    // Entity를 Dto로 매핑하는 용도의 생성자
+      public CouponDto(Coupon entity) {
+          this.id = entity.getId();
+          this.name = entity.getCouponType().getName();
+          this.discountRate = entity.getCouponType().getDiscountRate();
+          this.minAmount = entity.getCouponType().getMinAmount();
+      }
+  }
+  ```
+
+  과거에 작성했었던 코드를 그대로 가지고 왔다. 쿠폰 테이블에서 쿠폰을 하나 조회해서 이를 클라이언트에게 넘겨주는 작업이 필요했었는데, 이 과정을 수행하기 위해서 다음의 로직을 따라야 했다.
+
+  1. Repository의 메서드를 이용해 조건에 맞는 쿠폰 Entity를 조회해온다.
+  2. 조회한 Coupon의 타입을 Entity에서 Dto로 바꿔준다.
+  3. 클라이언트에 `CouponDto`를 넘겨준다.
+
+  즉, Repository에서 찾아준 쿠폰의 타입은 Entity이므로, 클라이언트에 넘겨주기 위해서는 이 쿠폰을 Dto 타입으로 바꿔줘야 하고, 따라서 Coupon Entity를 Coupon Dto에 매핑하는 코드를 추가로 작성해줘야 하는 것이다.       
+
+  그런데, JPA의 Repository는 DTO Projection을 지원하고 있었다. 간단히 말해서, Repository에서 조회한 데이터를 Entity 객체가 아니라, Dto 객체로 반환해주는 기능을 제공한다는 것이다.                     
+
+  ```java
+  public interface CouponRepository extends JpaRepository<Coupon, Integer> {
+      Collection<CouponDto> findByPaymentId(Integer paymentId);
+  }
+
+  @RequiredArgsConstructor
+  public class CouponDto {
+      private final Integer id;
+      private final String name;
+      private final int discountRate;
+      private final int minAmount;
+  }
+  ``` 
+
+  `CouponDto`를 따로 정의해놓고, Repository 조회 메서드의 반환형을 `CouponDto`로 설정해주기만 하면, JPA Repository가 `CouponDto`의 생성자를 보고 알아서 Entity를 Dto에 매핑해주는 것이다.           
+
+  이렇게 되면 비즈니스 로직 상에서 직접 Entity를 Dto에 매핑할 필요도 없고, Dto 클래스 내에 Entity를 Dto로 매핑하는 생성자를 정의할 필요도 없기 때문에 코드도 매우 깔끔해진다. 
