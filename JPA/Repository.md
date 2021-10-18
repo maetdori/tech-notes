@@ -232,3 +232,20 @@
   `CouponDto`를 따로 정의해놓고, Repository 조회 메서드의 반환형을 `CouponDto`로 설정해주기만 하면, JPA Repository가 `CouponDto`의 생성자를 보고 알아서 Entity를 Dto에 매핑해주는 것이다.           
 
   이렇게 되면 비즈니스 로직 상에서 직접 Entity를 Dto에 매핑할 필요도 없고, Dto 클래스 내에 Entity를 Dto로 매핑하는 생성자를 정의할 필요도 없기 때문에 코드도 매우 깔끔해진다. 
+  
+
+<br/>
+
+
+## 정리
+
+* Spring Data JPA는 JPA를 더욱 편리하게 사용할 수 있도록 Spring에서 제공하는 기술이다.
+* 이 경우 Repository를 활영하여 DB에 접근할 수 있다. (Reduced boilerplate code)
+* `JpaRepository`는 객체-데이터 매핑에 있어서 강력한 이점을 제공한다.
+  1. JPA 공통 메서드: 간단한 상속만으로 CRUD, Sorting 등과 관련된 공통 메서드 제공
+  2. 쿼리 메서드: 네이밍 룰에 따른 메서드 선언만으로 쿼리 자동 생성
+* 뿐만 아니라 JpaRepository는 다음과 같은 기능도 제공한다.
+  1. JOIN 쿼리 수행 가능: 네이밍 룰에 따라 Entity 내 연관관계 필드 탐색
+  2. DTO Projection 지원
+* 결론
+  * Spring Data JPA (잘 알고)쓰자!
