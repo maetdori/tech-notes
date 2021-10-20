@@ -5,7 +5,7 @@
 이런 상황을 방지하기 위해 서버사이드에서는 로드 밸런싱을 하기도 하고, DB사이드에서는 H/A, A/A 방식으로 구성을 하기도 한다. 하지만 이러한 방식은 비용도 많이 들고 무엇보다 DB사이드에서의 구성은 쉽지 않다. 이에 대한 대안으로 우리는 **비동기 메시지 처리 방식**을 택하게 된다.
 
 ### MQ <sub>Message Queue</sub>
-**메시지 큐(Message Queue: MQ)**는 프로세스 또는 프로그램 인스턴스가 데이터를 서로 교환할 때 사용하는 통신 방법이다. 더 큰 개념으로는 **메시지 지향 미들웨어(Message Oriented Middleware: MOM)**를 구현한 시스템을 의미한다. 여기서 MOM은 비동기 메시지를 사용하는 응용 프로그램 간의 데이터 송수신을 말한다. MQ는 별도의 공정 작업을 연기할 수 있는 유연성을 제공하여 SOA(Service-Oriented Architecture)의 개발에 도움을 줄 수 있다.   
+**메시지 큐(Message Queue: MQ)** 는 프로세스 또는 프로그램 인스턴스가 데이터를 서로 교환할 때 사용하는 통신 방법이다. 더 큰 개념으로는 **메시지 지향 미들웨어(Message Oriented Middleware: MOM)** 를 구현한 시스템을 의미한다. 여기서 MOM은 비동기 메시지를 사용하는 응용 프로그램 간의 데이터 송수신을 말한다. MQ는 별도의 공정 작업을 연기할 수 있는 유연성을 제공하여 SOA(Service-Oriented Architecture)의 개발에 도움을 줄 수 있다.   
 
 > #### 용어정리
 > * 메시지 지향 미들웨어(Message Oriented Middleware: MOM)
