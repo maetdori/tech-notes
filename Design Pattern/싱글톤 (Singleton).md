@@ -29,7 +29,7 @@ public class SingleObject {
 ```java
 public class SingletonPatternDemo {
     public static void main(String[] args) {
-        
+
         //항상 getter로 객체를 받아와야 함.
         SingleObject object = SingleObject.getInstance();
     }
