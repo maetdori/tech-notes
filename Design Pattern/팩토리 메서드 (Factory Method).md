@@ -10,7 +10,7 @@
 * **SOLID 원칙 중 DIP (Dependency Inversion Principle, 의존 관계 역전 원칙)를 성립함**
 
 ## 구조
-<img src="factory-method.png" >
+<img src="factory-method.png" width=1000>
 
 ## 코드
 
@@ -33,6 +33,7 @@ public class FactoryPatternDemo {
     }
 }
 ```
+<br/>
 
 2. 팩토리에서 만들어낼 상품들
 
@@ -68,6 +69,7 @@ public class Square implements Shape {
     }
 }
 ```
+<br/>
 
 3. 이 상품들을 만들어 내보낼 팩토리
 ```java
