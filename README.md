@@ -9,4 +9,4 @@
   * [Repository: Spring Data JPA의 핵심](https://github.com/maetdori/tech-notes/blob/main/JPA/Repository/Repository.md) 
 * [MQ](https://github.com/maetdori/tech-notes/blob/main/MQ/mq.md)
 * [Server](https://github.com/maetdori/tech-notes/tree/main/Server)
-  * [서버(세션) 기반 인증 vs 토큰 기반 인증](https://github.com/maetdori/tech-notes/blob/main/Server/Session%20%26%20Token/Session%20%26%20Token.md)
+  * [서버(세션) 기반 인증 vs 토큰 기반 인증](https://github.com/maetdori/tech-notes/blob/main/Server/Session%20%26%20Token/%EC%84%9C%EB%B2%84(%EC%84%B8%EC%85%98)%20%EA%B8%B0%EB%B0%98%20%EC%9D%B8%EC%A6%9D%20vs%20%ED%86%A0%ED%81%B0%20%EA%B8%B0%EB%B0%98%20%EC%9D%B8%EC%A6%9D.md)
